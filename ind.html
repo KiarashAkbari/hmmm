@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوالات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #question {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>به سوالات زیر پاسخ بده</h1>
+    <div id="question"></div>
+    <input type="text" id="answer" placeholder="جوابت رو اینجا بنویس">
+    <button onclick="nextQuestion()">بعدی</button>
+
+    <script>
+        const questions = [
+            "اسمت چیه؟",
+            "دروغ که نمیگی؟",
+            "کجا دوست داری بری؟",
+            "مطمئنی؟",
+            "چه ساعتی؟"
+        ];
+
+        let currentQuestion = 0;
+
+        function nextQuestion() {
+            const answer = document.getElementById("answer").value;
+            document.getElementById("answer").value = ""; // پاک کردن جواب
+            if (currentQuestion < questions.length) {
+                document.getElementById("question").innerText = questions[currentQuestion];
+                currentQuestion++;
+            } else {
+                document.getElementById("question").innerText = "میبینمت فرشته.";
+                document.getElementById("answer").style.display = "none";
+                document.querySelector("button").style.display = "none";
+            }
+        }
+
+        // نمایش اولین سوال
+        document.getElementById("question").innerText = questions[currentQuestion];
+    </script>
+</body>
+</html>
